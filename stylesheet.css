@@ -7,6 +7,7 @@ body {
     align-items: center;
     font-family: Montserrat;
     color: #ffffff;
+    
 }
 
 .container {
@@ -16,6 +17,7 @@ body {
     flex-direction: column;
     background-color: #1e1e20;
     border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 }
 
 .display{
@@ -28,16 +30,20 @@ body {
     border-radius: 20px;
 }
 
-.calculated {
+.outputCalc {
     text-align: right;
     padding: 10px;
     font-size: 1.5em;
 }
 
 .inputCalc {
+    display: flex;
+    justify-content: flex-end;
     text-align: right;
-    padding: 10px;
+    padding: 10px 10px 10px 10px;
     font-size: 2.5em;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 .buttonPad {
@@ -59,7 +65,12 @@ body {
     color: #ffffff;
 }
 
-.grow {
+.buttonPad button:hover {
+    background-color: #ebeff3;
+    color: black;
+}
+
+#grow {
     background-color: white;
     padding: 1em;
     border-radius: 20px;
@@ -70,13 +81,29 @@ body {
     background-color: #7ac57a;
 }
 
+#grow:hover {
+    background-color: #ebeff3;
+    color: black;
+}
+
 #orange {
     background-color: #e49534;
+    font-weight: bold;
+}
+
+#orange:hover {
+    background-color: #ebeff3;
+    color: black;
 }
 
 #red {
     background-color: #2c1f23;
     color: #d04c52;
+}
+
+#red:hover {
+    background-color: #ebeff3;
+    color: black;
 }
 
 
