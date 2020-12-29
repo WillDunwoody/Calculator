@@ -7,10 +7,9 @@ const equals = document.querySelector(".equals")
 const inputText = document.querySelector(".inputCalc")
 const outputText = document.querySelector(".outputCalc")
 
-let inputOperand = '';
-let outputCalculation = '';
-let calculation = '';
-
+let inputOperand = ''
+let outputCalculation = ''
+let calculation = ''
 
 inputText.textContent = 0
 outputText.textContent = ''
@@ -21,18 +20,22 @@ function calculator() {
     let finalSum = ''
 
     function appendOperand(num) {
-        inputOperand = inputOperand + num;
+        inputOperand = inputOperand + num
     }
 
     function inputDisplay() {
-        inputText.textContent = inputOperand;
+        if (inputOperand === '.') {
+            inputOperand = '0' + inputOperand
+        }
+        inputText.textContent = inputOperand
     }
 
     function outputDisplay(operator) {
-        sum();
-        calculation = operator;
-        outputCalculation = inputOperand;
-        inputOperand = '';
+        if (inputOperand === '') return 
+        sum()
+        calculation = operator
+        outputCalculation = inputOperand
+        inputOperand = ''
         inputText.textContent = 0
         outputText.textContent = outputCalculation + ' ' + calculation
     }
@@ -97,9 +100,9 @@ clearButton.addEventListener("click", function() {
 });
 
 function clear(){
-    inputOperand = '';
-    outputCalculation = '';
-    calculation = '';
+    inputOperand = ''
+    outputCalculation = ''
+    calculation = ''
 
     inputText.textContent = 0
     outputText.textContent = ''
