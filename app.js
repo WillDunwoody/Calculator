@@ -27,6 +27,7 @@ function calculator() {
         if (inputOperand === '.') {
             inputOperand = '0' + inputOperand
         }
+        if (inputOperand.length >= 21 ) return
         inputText.textContent = inputOperand
     }
 
@@ -67,12 +68,12 @@ function calculator() {
    
     operand.forEach((button) => {
         button.addEventListener("click", function(){
-            if (button.textContent === '0' && inputOperand === '') return
-            if (button.textContent === '.' && inputOperand.includes('.')) return
             if (equalsButton === true) {
                 clear()
                 equalsButton = false
             }
+            if (button.textContent === '0' && inputOperand === '') return
+            if (button.textContent === '.' && inputOperand.includes('.')) return
             appendOperand(button.textContent)
             inputDisplay()
         })
@@ -106,6 +107,7 @@ function clear(){
 
     inputText.textContent = 0
     outputText.textContent = ''
+
 }
 
 calculator();
