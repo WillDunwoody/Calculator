@@ -12,7 +12,7 @@ body {
 
 .container {
     display: flex;
-    height: 60vh;
+    height: 550px;
     width: 300px;
     flex-direction: column;
     background-color: #1e1e20;

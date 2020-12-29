@@ -7,17 +7,20 @@ const equals = document.querySelector(".equals")
 const inputText = document.querySelector(".inputCalc")
 const outputText = document.querySelector(".outputCalc")
 
+let inputOperand = '';
+let outputCalculation = '';
+let calculation = '';
+
+
+inputText.textContent = 0
+outputText.textContent = ''
+
 function calculator() {
 
-    let inputOperand = '';
-    let outputCalculation = '';
-    let calculation = '';
+    let equalsButton = false
+    let finalSum = ''
 
-    inputText.textContent = 0
-    outputText.textContent = ''
-  
     function appendOperand(num) {
-        if (num === 0) return
         inputOperand = inputOperand + num;
     }
 
@@ -26,10 +29,7 @@ function calculator() {
     }
 
     function outputDisplay(operator) {
-        if (inputOperand === '') return
-        if (outputCalculation !== '') {
-            sum();
-        }
+        sum();
         calculation = operator;
         outputCalculation = inputOperand;
         inputOperand = '';
@@ -37,54 +37,72 @@ function calculator() {
         outputText.textContent = outputCalculation + ' ' + calculation
     }
 
-
     function sum() {
-
-        let finalSum
         let input = parseFloat(inputOperand)
         let output = parseFloat(outputCalculation)
         switch (calculation) {
             case '+':
-                finalSum = input + output
+                finalSum = output + input
                 break
             case '-':
-                finalSum = input - output
+                finalSum = output - input
                 break
             case 'x':
-                finalSum = input * output
+                finalSum = output * input
                 break
             case '÷':
-                finalSum = input / output
+                finalSum = output / input
                 break
             default:
                 return       
         }
-    
         inputOperand = finalSum
         calculation = ''
         outputCalculation = ''
+        outputText.textContent = ''
     }
-
-    operator.forEach((button) => {
+   
+    operand.forEach((button) => {
         button.addEventListener("click", function(){
-            outputDisplay(button.textContent)
+            if (button.textContent === '0' && inputOperand === '') return
+            if (button.textContent === '.' && inputOperand.includes('.')) return
+            if (equalsButton === true) {
+                clear()
+                equalsButton = false
+            }
+            appendOperand(button.textContent)
+            inputDisplay()
         })
     })
 
-    operand.forEach((button) => {
+    operator.forEach((button) => {
         button.addEventListener("click", function(){
-            appendOperand(button.textContent)
-            inputDisplay()
+            if (equalsButton === true) {
+                equalsButton = false
+            }
+            outputDisplay(button.textContent)
         })
     })
 
     equals.addEventListener("click", function() {
         sum()
         inputDisplay()
+        equalsButton = true
     });
-
+ 
 }
 
-clearButton.addEventListener("click", calculator);
+clearButton.addEventListener("click", function() {
+    clear()
+});
+
+function clear(){
+    inputOperand = '';
+    outputCalculation = '';
+    calculation = '';
+
+    inputText.textContent = 0
+    outputText.textContent = ''
+}
 
 calculator();
