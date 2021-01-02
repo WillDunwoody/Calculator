@@ -31,8 +31,7 @@ function calculator() {
         inputText.textContent = inputOperand
     }
 
-    function outputDisplay(operator) {
-        if (inputOperand === '') return 
+    function outputDisplay(operator) {        
         sum()
         calculation = operator
         outputCalculation = inputOperand
@@ -89,25 +88,23 @@ function calculator() {
     })
 
     equals.addEventListener("click", function() {
+        if (inputOperand === '') return
         sum()
         inputDisplay()
         equalsButton = true
-    });
- 
+    })
 }
 
 clearButton.addEventListener("click", function() {
     clear()
-});
+})
 
-function clear(){
+function clear() {
     inputOperand = ''
     outputCalculation = ''
     calculation = ''
-
     inputText.textContent = 0
     outputText.textContent = ''
-
 }
 
-calculator();
+calculator()
